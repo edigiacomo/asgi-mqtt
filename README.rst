@@ -30,9 +30,3 @@ The keys are:
 * `topic`: topic of the `MQTT` message
 * `payload`: payload of the `MQTT` message
 * `qos`: quality of service of the `MQTT` message (0, 1 or 2)
-
-TODO
-----
-
-* Publish `MQTT` messages from Django
-* Signal handling in `asgimqtt` program

@@ -15,7 +15,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "asgimqtt = asgimqtt.cli.main",
+            "asgimqtt=asgimqtt.cli:main",
         ]
     },
 )

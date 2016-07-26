@@ -17,10 +17,11 @@ In your Django code::
 
     # routing.py
     channels_routing = [
-        route("mqtt.pub", mqtt_consumer),
+        route("mqtt.sub", mqtt_consumer),
     ]
 
-**Note**: you can only receive messages published (channel `mqtt.pub`).
+**Note**: you can only receive messages published in `MQTT` broker (channel
+`mqtt.sub`).
 
 The keys are:
 

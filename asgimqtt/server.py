@@ -14,7 +14,7 @@ def on_connect(client, userdata, rc):
 def on_message(client, userdata, message):
     logger.debug("Received message from topic {}".format(message.topic))
     channel = userdata["channel"]
-    channel.send("mqtt.subscribe", {
+    channel.send("mqtt.sub", {
         "topic": message.topic,
         "payload": message.payload,
         "qos": message.qos,

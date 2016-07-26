@@ -1,8 +1,8 @@
 asgimqtt
 ========
 
-`asgimqtt` is a simple `MQTT <http://mqtt.org/>` interface for `ASGI
-<http://channels.readthedocs.org/en/latest/asgi.html>`.
+`asgimqtt` is a simple `MQTT <http://mqtt.org/>`_ interface for `ASGI
+<http://channels.readthedocs.org/en/latest/asgi.html>`_.
 
 
 Usage

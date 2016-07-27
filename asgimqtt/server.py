@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 def on_connect(client, userdata, rc):
     logger.info("Connected with status {}".format(rc))
-    client.subscribe("#")
+    client.subscribe("#", 2)
 
 
 def on_disconnect(client, userdata, rc):

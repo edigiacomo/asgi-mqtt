@@ -1,5 +1,6 @@
 import logging
 import time
+import signal
 
 import paho.mqtt.client as mqtt
 
@@ -63,8 +64,17 @@ class Server(object):
         self.client.on_disconnect = on_disconnect
         self.client.on_message = on_message
 
+    def stop_server(self, signum, frame):
+        logger.info("Received signal {}, terminating".format(signum))
+        self.stop = True
+
+    def set_signal_handlers(self):
+        signal.signal(signal.SIGTERM, self.stop_server)
+        signal.signal(signal.SIGINT, self.stop_server)
+
     def run(self):
         self.stop = False
+        self.set_signal_handlers()
         self.client.connect(self.host, self.port)
         logger.info("Starting loop")
         while not self.stop:

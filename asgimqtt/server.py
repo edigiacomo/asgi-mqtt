@@ -35,13 +35,17 @@ def on_disconnect(client, userdata, rc):
 def on_message(client, userdata, message):
     logger.debug("Received message from topic {}".format(message.topic))
     channel = userdata["channel"]
-    channel.send("mqtt.sub", {
-        "topic": message.topic,
-        "payload": message.payload,
-        "qos": message.qos,
-        "host": userdata["host"],
-        "port": userdata["port"],
-    })
+    try:
+        channel.send("mqtt.sub", {
+            "topic": message.topic,
+            "payload": message.payload,
+            "qos": message.qos,
+            "host": userdata["host"],
+            "port": userdata["port"],
+        })
+    except Exception as e:
+        logger.error("Cannot send message {}".format(message))
+        logger.exception(e)
 
 
 class Server(object):

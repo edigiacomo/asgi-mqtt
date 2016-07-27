@@ -25,7 +25,7 @@ def main():
                         default="localhost")
     parser.add_argument("-p", "--port", help="MQTT broker port", type=int,
                         default=1883)
-    parser.add_argument("-v", "--verbosity", action="count",
+    parser.add_argument("-v", "--verbosity", action="count", default=0,
                         help="Set verbosity")
     parser.add_argument("channel_layer",
                         help=("The ASGI channel layer instance to use as "

@@ -78,7 +78,7 @@ class Server(object):
         self.client.connect(self.host, self.port)
         logger.info("Starting loop")
         while not self.stop:
-            self.client.loop()
             logger.debug("Restarting loop")
+            self.client.loop()
 
         self.client.disconnect()

@@ -7,7 +7,7 @@ import paho.mqtt.client as mqtt
 logger = logging.getLogger(__name__)
 
 
-def on_connect(client, userdata, rc):
+def on_connect(client, userdata, flags, rc):
     logger.info("Connected with status {}".format(rc))
     client.subscribe("#", 2)
 

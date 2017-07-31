@@ -30,6 +30,9 @@ def main():
     parser.add_argument("channel_layer",
                         help=("The ASGI channel layer instance to use as "
                               "path.to.module:instance.path"))
+    parser.add_argument("-U", "--username", help="MQTT username to authorised connection")
+    parser.add_argument("-P", "--password", help="MQTT password to authorised connection")
+
     args = parser.parse_args()
     logging.basicConfig(
         level={
@@ -42,5 +45,5 @@ def main():
     logger.info("Starting interface to MQTT broker {}:{}, channel {}".format(
         args.host, args.port, args.channel_layer
     ))
-    server = Server(channel_layer, args.host, args.port)
+    server = Server(channel_layer, args.host, args.port, args.username, args.password)
     server.run()

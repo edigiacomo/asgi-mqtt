@@ -4,7 +4,6 @@ import signal
 
 import paho.mqtt.client as mqtt
 
-
 logger = logging.getLogger(__name__)
 
 
@@ -51,7 +50,7 @@ def on_message(client, userdata, message):
 
 
 class Server(object):
-    def __init__(self, channel, host, port):
+    def __init__(self, channel, host, port, username=None, password=None):
         self.channel = channel
         self.host = host
         self.port = port
@@ -61,6 +60,8 @@ class Server(object):
             "host": self.host,
             "port": self.port,
         })
+        self.username = username
+        self.password = password
         self.client.on_connect = on_connect
         self.client.on_disconnect = on_disconnect
         self.client.on_message = on_message
@@ -76,6 +77,8 @@ class Server(object):
     def run(self):
         self.stop = False
         self.set_signal_handlers()
+        if self.username:
+            self.client.username_pw_set(username=self.username, password=self.password)
         self.client.connect(self.host, self.port)
         logger.info("Starting loop")
         while not self.stop:

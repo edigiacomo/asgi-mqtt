@@ -1,0 +1,17 @@
+<html>
+    <head>
+    </head>
+    <body>
+    <script>
+socket = new WebSocket("ws://" + window.location.host + "/chat/");
+socket.onmessage = function(e) {
+    var p = document.createElement("span");
+    p.appendChild(document.createTextNode(new Date()));
+    p.appendChild(document.createTextNode(" - "));
+    p.appendChild(document.createTextNode(e.data));
+    p.appendChild(document.createElement("br"));
+    document.body.appendChild(p);
+}
+    </script>
+    </body>
+</html>
